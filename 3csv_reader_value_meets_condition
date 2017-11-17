@@ -1,0 +1,25 @@
+#文件需求是通过以下三种方法筛选出csv文件的特定行，分别用基础python语句和pandas
+#当行中的值满足某个条件
+#当行中的值属于某个集合
+#当行中的值匹配某个表达式（正则表达式）
+
+
+#文件需求1：筛选出Supplier Name = sipplier Z 或者 cost>60的行
+#method1 python语句
+
+#!/usr/bin/env python3
+import sys
+import csv
+input_file = sys.argv[1]
+output_file = sys.argv[2]
+with open(input_file,'r',newline='') as csv_in_file:
+    with open(output_file,'w',newline='') as csv_out_file:
+        filereader = csv.reader(csv_in_file)
+        filewriter = csv.writer(csv_out_file)
+        header = next(filereader) #csv的next函数读取文件中的第一行，即属性行
+        filewriter.writerow(header) #将标题写入到输出文件
+        for row_list in filereader:
+            supplier = str(row_list[0]).strip() #列表索引每行数据的第一个值，然后字符串化，最后strip
+            cost = str(row_list[3]).strip('$').replace(',','') #replace函数用空值替换逗号
+            if supplier == 'Supplier Z' or float(cost) > 600.00:
+                filewriter.writerow(row_list)
