@@ -1,0 +1,19 @@
+#本文件的需求是用基础python语句读写csv文件
+#!/usr/bin/env python3  #注释行，使脚本在不同系统间具有可移植性
+import sys #引入python中内置的sys模块
+
+input_file = sys.argv[1] #命令行参数列表，用于传递给python脚本
+output_file = sys.argv[2] #也就是在运行脚本时在命令行输入的内容
+
+with open(input_file,'r',newline='') as filereader: #with语句中将input_file打开作为一个文件对象filereafer,'r'表示只读模式
+    with open (output_file,'w',newline='') as filewriter: #'w'表示可写模式
+        header = filereader.readline() #读取输入文件input_file的第一行数据-属性行
+        header = header.strip() #string模块中的strip函数去掉header中字符串两端的空格、制表符和换行符，然后重新赋值
+        header_list = header.split(',') #string模块中的split函数将字符串用','拆分成列表
+        print(header_list)
+        filewriter.write(','.join(map(str,header_list))+'\n') #将header_list中数据写入输出文件
+        for row in filereader:
+            row = row.strip()
+            row_list = row.split(',')
+            print(row_list)
+            filewriter.write(','.join(map(str,row_list))+'\n')
