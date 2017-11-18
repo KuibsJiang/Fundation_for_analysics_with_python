@@ -4,7 +4,7 @@
 #当行中的值匹配某个表达式（正则表达式）
 
 
-#文件需求1：筛选出Supplier Name = sipplier Z 或者 cost>60的行
+#文件需求1：筛选出Supplier Name = sipplier Z 或者 cost>600的行
 #method1 python语句
 
 #!/usr/bin/env python3

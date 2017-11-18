@@ -1,0 +1,25 @@
+#当行中的值属于某个集合
+#文件需求2：筛选出数据中日期属于{'1/20/14','1/30/14'}的行
+
+#method1 基础python语句
+#!/usr/bin/env python3
+
+import sys
+import csv
+input_file = sys.argv[1]
+output_file = sys.argv[2]
+importent_data = ['1/20/14','1/30/14']
+with open(input_file,'r',newline='') as csv_in_file:
+    print(csv_in_file)
+    with open(output_file,'w',newline='') as csv_out_file:
+        filereader = csv.reader(csv_in_file) #fileresder是被创建的文件读取对象，专门读取输入文件中的行
+        filewriter = csv.writer(csv_out_file)
+        header = next(filereader)
+        print(header)
+        filewriter.writerow(header)
+        for row_list in filereader:
+            print(row_list)
+            a_data = row_list[4]
+            if a_data in importent_data:
+                filewriter.writerow(row_list)
+
