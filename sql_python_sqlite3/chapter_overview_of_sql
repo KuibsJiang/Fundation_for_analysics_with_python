@@ -1,0 +1,18 @@
+本章概述：
+关系数据库（relational database）：保存信息的表由表间定义好的关系相关联。
+非关系数据库（non-relational database）：适用于大数据，将所有信息顺序存储于一个记录中。缺点是每次更新都要重新保存副本。
+
+本章主要讲python和关系数据库间的交互，CRUD(CREATE(创建)、READ(读)、UPDATE（更新）、DELETE（删除）)
+
+内置模块sqlite3（轻型数据库，也称内存数据库），是一种基于磁盘的轻量级数据库。
+用python代码直接创建一个数据库和充满数据的表，以实现数据库、数据和表间的交互。
+sql（structured query language）：结构化查询语言。
+
+MYSQL数据库
+这部分内容通过独立的数据库实现交互。
+需要用到MYSQLdb扩展包 mysqlclient（python3）实现python和数据库、表进行交互。
+
+VARCHAR:可变字符型字段，可节省空间。
+CHAR:有固定数量的字符的字段，或需要将值向右补齐到一个固定长度。
+ENUM:字段取值是允许值列表
+BLOB：字段内容是长度可变的大量文本时。
